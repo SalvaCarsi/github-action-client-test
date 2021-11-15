@@ -1,0 +1,24 @@
+name: Bump version
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Bump version and push tag
+      run: |
+        chmod +x ./scripts/github_tag.sh
+        ./scripts/github_tag.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Removes old tags
+      run: |
+        chmod +x ./scripts/remove_old_tags.sh
+        ./scripts/remove_old_tags.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
