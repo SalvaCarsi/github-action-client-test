@@ -11,9 +11,7 @@ jobs:
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
-      run: |
-        chmod +x ./scripts/github_tag.sh
-        ./scripts/github_tag.sh
+      uses: SalvaCarsi/github_action_test@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Removes old tags
