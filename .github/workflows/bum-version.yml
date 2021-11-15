@@ -14,9 +14,3 @@ jobs:
       uses: SalvaCarsi/github_action_test@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Removes old tags
-      run: |
-        chmod +x ./scripts/remove_old_tags.sh
-        ./scripts/remove_old_tags.sh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
